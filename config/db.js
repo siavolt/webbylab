@@ -3,7 +3,8 @@ const keys = require("./keys");
 const options = {
     reconnectTries: Number.MAX_VALUE,
     reconnectInterval: 1000,
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 };
 
 const mLab = keys.mongoURI;
