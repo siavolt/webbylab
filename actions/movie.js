@@ -4,8 +4,9 @@ exports.getMovieList = async (req, res, next) => {
     try {
         let result;
         let { title, stars } = req.query;
+        !title ? title = "∅" : null;
         if (title || stars) {
-            result = await movieModel.find({ $or: [{ title }, { stars: { $all: stars } }] }).sort({ title: 1 })
+            result = await movieModel.find({ $or: [{ title: { $regex: title } }, { stars: { $all: stars } }] }).sort({ title: 1 })
         } else {
             result = await movieModel.find().sort({ title: 1 })
         }
